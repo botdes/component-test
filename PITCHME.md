@@ -4,7 +4,7 @@
 
 ---
 @title[Plan]
-# Plan
+## Plan
 
 * What is ATE
 * Component in testing pyramid
@@ -14,20 +14,47 @@
 
 @title[What is ATE]
 
-### What is ATE?
+## What is ATE?
 #### 15 backend engeneers
 #### 63 gihub repos
 
 ---
 
-#### No more <span class="gray">Keynote</span>.
-#### No more <span class="gray">Powerpoint</span>.
-<br>
-#### Just <span class="gold">Markdown</span>.
-#### Then <span class="gold">Git-Commit</span>.
+## Component test in testing pyramid
 
----?code=assets/md/hello.md&title=Step 1. PITCHME.md
+Note:
+Add a picture here:
+Introduced fairly recently
 
+---
+## What requirements for component test
+* Close to production
+* Blackbox 
+* Fast
+
+Note: 
+
+---
+## What requirements for component test
+* Close to production
+* Blackbox 
+* Fast
+* Running locally
+
+Note: 
+
+---
+
+
+## Initial state
+### Only Unit, Integration and Smoke Tests
+* Test manually via datadog in dev and pre environments
+* Issues in juice in dev
+* Long feedback loop 
+* Real AWS causing a lot of garbage
+
+---
+##
 1) what is ATE
     - backed, 20 + micro services (http/sqs/kinesis)
 2) component in testing piramind
