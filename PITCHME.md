@@ -39,12 +39,11 @@ to undertand the scope of the problem.
 ###### Cassandra Spark ElasticSearch 
 
 ---
+#### Where will you place component test?
+[test pyramid](p1.png)
 
-## Component test in testing pyramid
-
-Note:
-Add a picture here:
-Introduced fairly recently
+---
+[test pyramid](p2.png)
 
 ---
 ## What requirements for component test
