@@ -4,6 +4,8 @@
 
 ---
 @title[Plan]
+# Plan
+
 * What is ATE
 * Component in testing pyramid
 * Evaluation of component test in ATE
@@ -12,11 +14,9 @@
 
 @title[What is ATE]
 
-#### GitPitch turns <span class="gold">PITCHME.md</span> into
-#### interactive,
-#### online and offline slideshows.
-<br>
-<span class="aside">Just like this one...</span>
+### What is ATE?
+#### 15 backend engeneers
+#### 63 gihub repos
 
 ---
 
