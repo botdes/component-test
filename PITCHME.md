@@ -16,6 +16,14 @@
 
 ## What is ATE?
 
+![s_diagram](diagram.png)
+
+---
+
+@title[What is ATE]
+
+## What is ATE?
+
 ![diagram](diagram.png)
 Note: diagram here pulse, um, users -> ATE -> users/segments
 to undertand the scope of the problem.
@@ -27,7 +35,8 @@ to undertand the scope of the problem.
 #### 15 backend engeneers
 #### 63 gihub repos
 #### 25 microservices
-#### Ec2, Kineis, SQS, Postgres, Aerospike
+##### Scala Ec2 S3 Kineis SQS Postgres Aerospike
+###### Cassandra Spark ElasticSearch 
 
 ---
 
