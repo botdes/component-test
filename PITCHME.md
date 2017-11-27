@@ -15,6 +15,8 @@
 @title[What is ATE]
 
 ## What is ATE?
+
+Ate diagram here
 Note: diagram here pulse, um, users -> ATE -> users/segments
 to undertand the scope of the problem.
 ---
@@ -24,6 +26,7 @@ to undertand the scope of the problem.
 ## What is ATE?
 #### 15 backend engeneers
 #### 63 gihub repos
+#### 25 microservices
 #### Ec2, Kineis, SQS, Postgres, Aerospike
 
 ---
