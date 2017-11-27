@@ -43,7 +43,8 @@ to undertand the scope of the problem.
 ![test pyramid](p1_2.png)
 
 ---
-![test pyramid](p2.png)
+#### Component test
+![test pyramid](p2_2.png)
 
 ---
 ## What requirements for component test
