@@ -79,9 +79,7 @@ Note:
 ---
 ## Example of a microservice
 
-#### Input: Dineis stream with User Age predictions 
-#### Input: Defnitions of segments
-#### Output: Kinesis stream with users assigned to segments
+!(calculator)[calc.png]
 ---
 ## Setup Kinesis
 ```
