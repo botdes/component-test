@@ -120,9 +120,9 @@ class AteOfflineCalculatorComponentTest
 ```
 @[6]
 @[18-20]
-@[36]
+@[32,36,41]
 @[43-50]
-@[40]
+@[32,40-41]
 
 
 ---
