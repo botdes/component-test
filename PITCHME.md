@@ -65,9 +65,71 @@ class AteOfflineCalculatorComponentTest
   with BeforeAndAfterAll
   with DockerForAllTestOps
   with Eventually {
+
+  private val server = new EmbeddedHttpServer(twitterServer = new AteOfflineCalculatorServer)
+
+  private var wireMockServer: WireMockServer = _
+
+  private var userId: String = _
+
+  private val kinesisInputStreamName = "input-stream"
+  private val kinesisOutputStreamName = "output-stream"
+
+  private val kinesisContainerHolder =
+    registerContainerRunner(
+      KinesisContainerDetailsBuilder.withDynamicPort().get.build()
+    )
+  private val dynamoContainerHolder =
+    registerContainerRunner(
+      DynamoDbContainerRunnerBuilder.withDynamicPort().build()
+    )
+
+  private val aerospikeContainerHolder =
+    registerContainerRunner(
+      AerospikeContainerRunnerBuilder.withDynamicPort().build()
+    )
+
+  override protected def beforeAll(): Unit = {
+    super.beforeAll()
+
+    setupWireMock()
+    setupKinesis()
+    setupAerospike()
+
+    server.start()
+    waitForKinesisToInit(server.injector.instance[DatadogClient].asInstanceOf[FakeMetricClient])
+  }
+
+  private def setupKinesis(): Unit = {
+    val kinesisClient = kinesisContainerHolder.container.newClient()
+    createStream(kinesisClient, kinesisInputStreamName)
+    createStream(kinesisClient, kinesisOutputStreamName)
+    sys.props += "spt.kinesis.consumer.streamName" -> kinesisInputStreamName
+    sys.props += "spt.kinesis.publisher.streamName" -> kinesisOutputStreamName
+    sys.props += "spt.kinesis.endpoint" -> kinesisContainerHolder.container.endpoint
+    sys.props += "spt.dynamodb.endpoint" -> dynamoContainerHolder.container.endpoint
+  }
+
+  private def createStream(kinesisClient: AmazonKinesis, kinesisStreamName: String): Unit = {
+    kinesisClient.createStream(kinesisStreamName, 1)
+    (1 to 120).toStream
+      .map(_ => kinesisClient.describeStream(kinesisStreamName).getStreamDescription.getStreamStatus)
+      .takeWhile(_ != "ACTIVE").last
+  }
+
 ```
-@[5]
+@[6]
+@[18-20]
+@[36]
+@[43-50]
+@[40]
+
+
 ---
+## 
+
+---
+
 ##
 1) what is ATE
     - backed, 20 + micro services (http/sqs/kinesis)
