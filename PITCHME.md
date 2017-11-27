@@ -233,20 +233,26 @@ Note: Mention:
 1) Not only happy path 
 2) Use buisness use-cases
 ---
-### Issues  
-  - dockerised AWS components may not be 100% identical to real ones
-  - mocked data in services, can be wrong assumptions
-  - not 100% similarity between environments (if isLocal)
----
 ### Component test using docker
-  - Fast to run
-  - Close to prod
-  - Can be blackbox
+  - Fast feedback (run any test locally)
+  - Uses clean environment
+  - Quick to run 
 ---
+### Issues  
+  - Dockerised AWS components may not be 100% identical to real ones
+  - Mocked data in services, can be wrong assumptions
+  - Not 100% similarity between environments (if isLocal)
+
+---
+### Best practices
   * Test one thing at a time 
   * Think, can the test be flaky?
   * Check not only one happy path, but business related feature
+  
+  
   <br />
+  <br />
+  
   * Don't check DB
   * Don't mock juice modules
 
