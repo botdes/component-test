@@ -16,7 +16,7 @@
 
 ## What is ATE?
 
-(diagram.png)
+![diagram](diagram.png)
 Note: diagram here pulse, um, users -> ATE -> users/segments
 to undertand the scope of the problem.
 ---
