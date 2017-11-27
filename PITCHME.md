@@ -16,7 +16,7 @@
 
 ## What is ATE?
 
-Ate diagram here
+(diagram.png)
 Note: diagram here pulse, um, users -> ATE -> users/segments
 to undertand the scope of the problem.
 ---
