@@ -31,15 +31,10 @@ Introduced fairly recently
 * Close to production
 * Blackbox 
 * Fast
-
-Note: 
-
----
-## What requirements for component test
-* Close to production
-* Blackbox 
-* Fast
 * Running locally
+
+@[1]
+@[2-4]
 
 Note: 
 
