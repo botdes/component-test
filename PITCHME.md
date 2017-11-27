@@ -60,26 +60,34 @@ to undertand the scope of the problem.
 
 ---
 
-
-
 ## Initial state
-### Only Unit, Integration and Smoke Tests
-* Test manually via datadog in dev and pre environments
-* Integration test using dev AWS
-* Component test with mocked AWS (sometimes)
+### UnitTest IntegrationTest SmokeTest
+* Integration test using developers account in  AWS
+* Run manually smoke test
+* Look at datadog metrics in dev and pre environments
 
 ---
 ## Issues
-* Issues in juice in dev
-* Long feedback loop 
-* Shared AWS resources between tests / lots of AWS garbage
+* Exeptions on startup (not the whole code tested)
+* Shared AWS resources between tests
+* Issues with local run and security 
 * Not very stable
-* Issues with local run / security 
-* Slow
+* Slow feedback loop
+* Not ready for Continious Deployment
+
 ---
+## Solution
+* Ligtweigt test that test the whole application
+* Use dockerised AWS
+---
+
 ### Shared docker lib
 
 [shared-docker-test-containers](https://github.schibsted.io/spt-advertising/shared-docker-test-containers)
+<br />
+<br />
+based on `com.spotify:docker-client`
+
 ---
 ## Example of a microservice
 
@@ -220,52 +228,27 @@ Note: Mention:
 2) Use buisness use-cases
 ---
 ### Issues  
-  - not 100% similarity between environments (if isLocal)
-  - mocked data in services, can be wrong assumptions
   - dockerised AWS components may not be 100% identical to real ones
+  - mocked data in services, can be wrong assumptions
+  - not 100% similarity between environments (if isLocal)
 ---
 ### Component test using docker
-  - fast
-  - close to prod
-  - nearly blackbox
+  - Fast to run
+  - Close to prod
+  - Can be blackbox
 ---
-* Use as a blackbox
+  * Test one thing at a time 
+  * Think, can the test be flaky?
+  * Check not only one happy path, but business related feature
+  <br />
   * Don't check DB
   * Don't mock juice modules
-  * Test one thing at a time 
-  * Check not only one happy path, but business related feature
+
+  
   
 Note: Example is age calculator that says that we should return an empty list if there is no age segments.
 ---
-
-##
-1) what is ATE
-    - backed, 20 + micro services (http/sqs/kinesis)
-2) component in testing piramind
-    - unit/ integration / component / smoke test 
-3) what requirements for component test
-    - close to production
-    - blackbox 
-    - fast
-    - running locally
-4) Initial state: No component test:
-    - test manually via datadog in dev / pre
-    - failures in dev with juice 
-    - very long feedback loop
-5) Intermediate state: integration test using real AWS
-    - slow
-    - shared resources between tests
-    - not very stable
-    - leave lots of garbage in aws
-    - issues with local run / security 
-6) Component test using docker
-    - fast
-    - close to prod
-    - nearly blackbox
-    - not 100% similarity between environments (if isLocal)
-    - mocked data in services, can be wrong assumptions
-7) Component test best practices
-    - use as blackbox, don't' check the db
-    - don't mock "inconvenient" classes
-    - test one thing 
-    - check not only one happy path, but business related feature.
+?
+---
+@vladimir.batygin
+@xabier.laiseca
