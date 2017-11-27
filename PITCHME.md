@@ -1,6 +1,6 @@
 @title[Introduction]
 
-# Component test in ATE
+# ATE Component Tests
 
 ---
 @title[Plan]
