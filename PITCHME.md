@@ -16,7 +16,7 @@
 
 ## What is ATE?
 
-![s_diagram](diagram.png)
+![s_diagram](s_diagram.png)
 
 ---
 
