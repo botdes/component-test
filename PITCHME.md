@@ -40,7 +40,7 @@ Introduced fairly recently
 * Blackbox 
 * Fast
 * Running locally
-* Easy to understand
+* Easy to read, ideally describes what service is doing
 
 Note: 
 
@@ -60,7 +60,7 @@ Note:
 * Not very stable
 * Issues with local run / security 
 * Slow
-----
+---
 ### Shared docker lib
 
 [shared-docker-test-containers](https://github.schibsted.io/spt-advertising/shared-docker-test-containers)
@@ -175,9 +175,9 @@ private val segmentsJson: String =
      |    }
      |  },
 ```
-@[1-2, 4]
+@[1-2,4]
 @[10-21]
-@[25-31]
+@[26-32]
 
 ---
 ## Tests 
@@ -204,6 +204,24 @@ feature("age criterion matching") {
 Note: Mention:
 1) Not only happy path 
 2) Use buisness use-cases
+---
+### Issues  
+  - not 100% similarity between environments (if isLocal)
+  - mocked data in services, can be wrong assumptions
+  - dockerised AWS components may not be 100% identical to real ones
+---
+### Component test using docker
+  - fast
+  - close to prod
+  - nearly blackbox
+---
+* Use as a blackbox
+  * Don't check DB
+  * Don't mock juice modules
+  * Test one thing at a time 
+  * Check not only one happy path, but business related feature
+  
+Note: Example is age calculator that says that we should return an empty list if there is no age segments.
 ---
 
 ##
