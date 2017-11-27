@@ -34,7 +34,7 @@ Since that time I began particulary sensity
 
 @title[What is ATE]
 
-## What is ATE?
+## ATE (Simplified)
 
 ![small diagram](s_diagram_2.png)
 
@@ -42,7 +42,7 @@ Since that time I began particulary sensity
 
 @title[What is ATE]
 
-## What is ATE?
+## ATE (zoom in)
 
 ![diagram](diagram.png)
 Note: diagram here pulse, um, users -> ATE -> users/segments
@@ -51,12 +51,11 @@ to undertand the scope of the problem.
 
 @title[What is ATE]
 
-## What is ATE?
-#### 15 backend engeneers
-#### 63 gihub repos
-#### 25 microservices
-##### Scala Ec2 S3 Kineis SQS Postgres Aerospike
-###### Cassandra Spark ElasticSearch 
+### 15 backend engeneers
+### 63 gihub repos
+### 25 microservices
+#### Scala Ec2 S3 Kineis SQS Postgres Aerospike
+#### Cassandra Spark ElasticSearch 
 
 ---
 
@@ -159,10 +158,10 @@ class AteOfflineCalculatorComponentTest
   }
 
 ```
-@[6]
-@[18-20]
-@[32,36,41]
-@[43-52]
+@[6](mix in shared test dependencies)
+@[18-20] (create containters)
+@[33,37,42] (intialise kinisis)
+@[43-52] (update config parameters)
 ---
 ## Setup segment definition stub
 ```
@@ -201,7 +200,7 @@ private val segmentsJson: String =
      |  },
 ```
 @[1-2,4]
-@[10-21]
+@[10,12,18,21]
 @[26-32]
 
 ---
@@ -211,21 +210,25 @@ feature("age criterion matching") {
   scenario("user matches criterion with single age bracket") {
     sendMessageAndVerifyOutput(
       input = UserPropertyDTO.PropertyType.Age(AgeDTO(22)),
-      expectedOutput = CriteriaByType(CriterionType.AGE, Seq(CriterionReference("segment-age-one-bracket", 10)))
+      expectedOutput = CriteriaByType(
+        CriterionType.AGE, 
+        Seq(CriterionReference("segment-age-one-bracket", 10)))
     )
   }
 
   scenario("user does not match criteria any more") {
     sendMessageAndVerifyOutput(
       input = UserPropertyDTO.PropertyType.Age(AgeDTO(75)),
-      expectedOutput = CriteriaByType(CriterionType.AGE, Seq.empty)
+      expectedOutput = CriteriaByType(
+        CriterionType.AGE, 
+        Seq.empty)
     )
   }
 }
 ```
 @[1]
-@[2-7]
-@[9-15]
+@[2,4-7]
+@[11,13-16]
 Note: Mention:
 1) Not only happy path 
 2) Use buisness use-cases
