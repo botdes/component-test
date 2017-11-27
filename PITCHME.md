@@ -162,8 +162,7 @@ class AteOfflineCalculatorComponentTest
 @[6]
 @[18-20]
 @[32,36,41]
-@[43-50]
-@[32,40-41]
+@[43-52]
 ---
 ## Setup segment definition stub
 ```
