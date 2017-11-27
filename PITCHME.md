@@ -11,6 +11,26 @@
 * Evaluation of component test in ATE
 * Best practices
 ---
+#### Where will you place component test?
+![test pyramid](p1_2.png)
+
+---
+#### Component test
+![test pyramid](p2_2.png)
+---
+## Requirements for component tests
+* Close to production
+* Blackbox 
+* Fast feedback
+* Stable
+* Running locally
+* Easy to read, ideally describes what service is doing
+
+Note: 
+I worked in a project which did computation on hadoop using hive. There project calculated some advertising metrics, so the numbers themselfs didn't mean a lot to programmers. In order to do a simplest change we needed to run a component test. The test on hadoop took ~1h. It was flaky. The output was just a bunch of numbers, so I coulnd say are they correct or not. morrover there was an invisible simbol separator that made the results completly unreadable. It took about two days to submit a change of 10 minutes coding. It was such a waste of time changing something in that project.
+Why am I telling this story - don't do like this.
+Since that time I began particulary sensity
+---
 
 @title[What is ATE]
 
@@ -39,24 +59,8 @@ to undertand the scope of the problem.
 ###### Cassandra Spark ElasticSearch 
 
 ---
-#### Where will you place component test?
-![test pyramid](p1_2.png)
 
----
-#### Component test
-![test pyramid](p2_2.png)
 
----
-## What requirements for component test
-* Close to production
-* Blackbox 
-* Fast
-* Running locally
-* Easy to read, ideally describes what service is doing
-
-Note: 
-
----
 
 ## Initial state
 ### Only Unit, Integration and Smoke Tests
@@ -79,7 +83,7 @@ Note:
 ---
 ## Example of a microservice
 
-!(calculator)[calc.png]
+![calculator](calc.png)
 ---
 ## Setup Kinesis
 ```
