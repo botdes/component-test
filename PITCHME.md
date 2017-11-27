@@ -40,7 +40,7 @@ to undertand the scope of the problem.
 
 ---
 #### Where will you place component test?
-![test pyramid](p1.png)
+![test pyramid](p1_2.png)
 
 ---
 ![test pyramid](p2.png)
