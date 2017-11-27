@@ -15,8 +15,16 @@
 @title[What is ATE]
 
 ## What is ATE?
+Note: diagram here pulse, um, users -> ATE -> users/segments
+to undertand the scope of the problem.
+---
+
+@title[What is ATE]
+
+## What is ATE?
 #### 15 backend engeneers
 #### 63 gihub repos
+#### Ec2, Kineis, SQS, Postgres, Aerospike
 
 ---
 
@@ -33,21 +41,32 @@ Introduced fairly recently
 * Fast
 * Running locally
 
-@[1]
-@[2-4]
-
 Note: 
 
 ---
-
 
 ## Initial state
 ### Only Unit, Integration and Smoke Tests
 * Test manually via datadog in dev and pre environments
 * Issues in juice in dev
 * Long feedback loop 
-* Real AWS causing a lot of garbage
+* Shared AWS resources between tests / lots of AWS garbage
+* Not very stable
+* Issues with local run / security 
+* Slow
 
+---
+## Setup
+```
+class AteOfflineCalculatorComponentTest
+  extends FeatureSpec
+  with Matchers
+  with BeforeAndAfterEach
+  with BeforeAndAfterAll
+  with DockerForAllTestOps
+  with Eventually {
+```
+@[5]
 ---
 ##
 1) what is ATE
