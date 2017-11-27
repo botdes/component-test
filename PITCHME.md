@@ -60,8 +60,10 @@ to undertand the scope of the problem.
 
 ---
 
-## Initial state
-### UnitTest IntegrationTest SmokeTest
+# 1.5 years ago
+### UnitTest 
+### IntegrationTest 
+### SmokeTest
 * Integration test using developers account in  AWS
 * Run manually smoke test
 * Look at datadog metrics in dev and pre environments
