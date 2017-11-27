@@ -114,9 +114,10 @@ class AteOfflineCalculatorComponentTest
   private val kinesisInputStreamName = "input-stream"
   private val kinesisOutputStreamName = "output-stream"
 
-  private val kinesisContainerHolder =
+  private val kinesisContainer =
     registerContainerRunner(
-      KinesisContainerDetailsBuilder.withDynamicPort().get.build()
+      KinesisContainerDetailsBuilder.withDynamicPort()
+        .get.build()
     )
   private val dynamoContainerHolder =
     registerContainerRunner(
@@ -140,13 +141,14 @@ class AteOfflineCalculatorComponentTest
   }
 
   private def setupKinesis(): Unit = {
-    val kinesisClient = kinesisContainerHolder.container.newClient()
-    createStream(kinesisClient, kinesisInputStreamName)
-    createStream(kinesisClient, kinesisOutputStreamName)
-    sys.props += "spt.kinesis.consumer.streamName" -> kinesisInputStreamName
-    sys.props += "spt.kinesis.publisher.streamName" -> kinesisOutputStreamName
-    sys.props += "spt.kinesis.endpoint" -> kinesisContainerHolder.container.endpoint
-    sys.props += "spt.dynamodb.endpoint" -> dynamoContainerHolder.container.endpoint
+    val kinesisClient = kinesisContainer.container.newClient()
+    createStream(kinesisClient, InputStreamName)
+    createStream(kinesisClient, OutputStreamName)
+    sys.props ++= Seq(
+      "kinesis.consumer.streamName" -> InputStreamName,
+      "kinesis.publisher.streamName" -> OutputStreamName,
+      "kinesis.endpoint" -> kinesisContainer.container.endpoint,
+      "dynamodb.endpoint" -> dynamoContainer.container.endpoint)
   }
 
   private def createStream(kinesisClient: AmazonKinesis, kinesisStreamName: String): Unit = {
