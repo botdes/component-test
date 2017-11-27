@@ -40,6 +40,7 @@ Introduced fairly recently
 * Blackbox 
 * Fast
 * Running locally
+* Easy to understand
 
 Note: 
 
@@ -48,15 +49,29 @@ Note:
 ## Initial state
 ### Only Unit, Integration and Smoke Tests
 * Test manually via datadog in dev and pre environments
+* Integration test using dev AWS
+* Component test with mocked AWS (sometimes)
+
+---
+## Issues
 * Issues in juice in dev
 * Long feedback loop 
 * Shared AWS resources between tests / lots of AWS garbage
 * Not very stable
 * Issues with local run / security 
 * Slow
+----
+### Shared docker lib
 
+[shared-docker-test-containers](https://github.schibsted.io/spt-advertising/shared-docker-test-containers)
 ---
-## Setup
+## Example of a microservice
+
+#### Input: Dineis stream with User Age predictions 
+#### Input: Defnitions of segments
+#### Output: Kinesis stream with users assigned to segments
+---
+## Setup Kinesis
 ```
 class AteOfflineCalculatorComponentTest
   extends FeatureSpec
@@ -123,11 +138,79 @@ class AteOfflineCalculatorComponentTest
 @[32,36,41]
 @[43-50]
 @[32,40-41]
+---
+## Setup segment definition stub
+```
+private def setupWireMock(): Unit = {
+  wireMockServer = new WireMockServer(WireMockConfiguration.wireMockConfig().dynamicPort())
+  wireMockServer.start()
+  stubSegmentDefinitionWithSegmentPages()
 
+  val host = s"localhost:${wireMockServer.port()}"
+  sys.props += ("spt.segmentDefinition.hosts" -> host)
+}
+
+private def stubSegmentDefinitionWithSegmentPages(): Unit = {
+  wireMockServer.stubFor(
+    get(urlPathEqualTo("/v6/segments"))
+      .withQueryParam("page", new EqualToPattern("1"))
+      .withQueryParam("page_size", new RegexPattern("[0-9]+"))
+      .willReturn(
+        aResponse()
+          .withStatus(200)
+          .withBody(segmentsJson)
+      )
+  )
+}
+
+private val segmentsJson: String =
+  s"""[
+     |  {
+     |    "id": "segment-age-one-bracket",
+     |    "value": { "ageCriteria": { "ageBrackets": [ { "lower": 18, "upper": 25 } ], "version": 10 } }
+     |  },
+     |  {
+     |    "id": "segment-age-overlapping-1",
+     |    "value": { "ageCriteria": { "ageBrackets": [ { "lower": 25, "upper": 32 } ], "version": 10 } }
+     |  },
+     |  {
+     |    "id": "segment-age-overlapping-2",
+     |    "value": { "ageCriteria": { "ageBrackets": [ { "lower": 28, "upper": 35 } ], "version": 10 } }
+     |  },
+     |  {
+     |    "id": "segment-age-multiple-brackets",
+     |    "value": { "ageCriteria": { "ageBrackets": [ { "lower": 35, "upper": 45 }, { "lower": 45, "upper": 55 } ], "version": 10 } }
+     |  },
+```
+@[1-2, 4]
+@[10-21]
+@[25-28]
 
 ---
-## 
+## Tests 
+```
+feature("age criterion matching") {
+  scenario("user matches criterion with single age bracket") {
+    sendMessageAndVerifyOutput(
+      input = UserPropertyDTO.PropertyType.Age(AgeDTO(22)),
+      expectedOutput = CriteriaByType(CriterionType.AGE, Seq(CriterionReference("segment-age-one-bracket", 10)))
+    )
+  }
 
+  scenario("user does not match criteria any more") {
+    sendMessageAndVerifyOutput(
+      input = UserPropertyDTO.PropertyType.Age(AgeDTO(75)),
+      expectedOutput = CriteriaByType(CriterionType.AGE, Seq.empty)
+    )
+  }
+}
+```
+@[1]
+@[2-7]
+@[9-15]
+Note: Mention:
+1) Not only happy path 
+2) Use buisness use-cases
 ---
 
 ##
