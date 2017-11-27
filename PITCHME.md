@@ -167,24 +167,17 @@ private val segmentsJson: String =
   s"""[
      |  {
      |    "id": "segment-age-one-bracket",
-     |    "value": { "ageCriteria": { "ageBrackets": [ { "lower": 18, "upper": 25 } ], "version": 10 } }
-     |  },
-     |  {
-     |    "id": "segment-age-overlapping-1",
-     |    "value": { "ageCriteria": { "ageBrackets": [ { "lower": 25, "upper": 32 } ], "version": 10 } }
-     |  },
-     |  {
-     |    "id": "segment-age-overlapping-2",
-     |    "value": { "ageCriteria": { "ageBrackets": [ { "lower": 28, "upper": 35 } ], "version": 10 } }
-     |  },
-     |  {
-     |    "id": "segment-age-multiple-brackets",
-     |    "value": { "ageCriteria": { "ageBrackets": [ { "lower": 35, "upper": 45 }, { "lower": 45, "upper": 55 } ], "version": 10 } }
+     |    "value": { 
+     |       "ageCriteria": { 
+     |         "ageBrackets": [ { "lower": 18, "upper": 25 } ], 
+     |         "version": 10
+     |       } 
+     |    }
      |  },
 ```
 @[1-2, 4]
 @[10-21]
-@[25-28]
+@[25-31]
 
 ---
 ## Tests 
