@@ -21,10 +21,10 @@ Note:
 ![test pyramid](p2_2.png)
 
 ---
-#### Unit test - test only one class
-#### Integration - test external dependecies
-## Component - test whole microservice
-#### Smoke - verify end to end
+* Unit test - test only one class
+* Integration - test external dependecies
+* <b>Component - test whole microservice</b>
+* Smoke - verify end to end
 
 ---
 ## Requirements for component tests
