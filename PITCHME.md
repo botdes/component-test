@@ -1,17 +1,24 @@
 @title[Introduction]
 
-# ATE Component Tests
-Note:
-My is Vladimir Batygin, I'm techlead in ATE team. Today I want to share with you how we do component test in ATE.
+## ATE Component Tests
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+#### @vladimir.batygin
+Note: Hi everyone, I'm vary glad that so many people came to learn more about test.
+My name is Vladimir Batygin, I'm a techlead in ATE team. Today I want to share with you how we do component test in ATE.
 ---
-@title[Plan]
-## Plan
+## Agenda
 
-* Component in testing pyramid
-* Evolution of component test in ATE
+* Component test in testing pyramid
+* Component test evolution in ATE
 * How to
-* Dos and Don'ts
-Note: 
+* DOs and DON'Ts
+
+Note: Angenda for next 20 minutes, look at an example of test, some advices
 ---
 #### Where will you place component test?
 ![test pyramid](p1_2.png)
@@ -21,12 +28,12 @@ Note:
 ![test pyramid](p2_2.png)
 
 Note: test naming is difficult: Integration, Component, System, Functional, Acceptance
-agree about naming in your team.
+advice: agree about naming in your team.
 ---
 * Unit test - test only one class
 * Integration - test integration with infrastructure (db, queues)
 * <b>Component - test the whole microservice</b>
-* Smoke - verify end to end
+* Smoke - verify end to end 
 Note: vs integration: whole component not only one dependency, business requirements
 vs smoke: only one component, differents paths, close but not identical to real
 ---
@@ -34,25 +41,29 @@ vs smoke: only one component, differents paths, close but not identical to real
 * Whole component, not only one dependency
 * Test black box, no mocks
 * Test all business features, not edge cases 
+Note: Component test whole component, integration get checks who we integrate with infrastucure, SQL code or kinesis library. Not libray iteself, but how we interact with it.
 ---
 ## Component vs Smoke
 * Close to real, but may not be real
 * Test all business requirements, not only happy path
 * Running locally
 
-Note: still need postdeployment checks or helthchecks
+Note: Some is e2e test. We still need postdeployment checks or helthchecks
 ---
 # ate 1.5 years ago
-#### Integration test using developers account in AWS
-#### Run manually smoke test
-#### Look at datadog metrics in dev and pre environments
+* Integration test using developers account in AWS
+* Smoke test runs hourly
+* Look at datadog metrics in dev and pre environments
 
+Note: 25 microservices, scala, kinieses
 ---
 ## Issues
 * Exceptions on startup (not the whole code is tested)
 * Issues with local run and security 
 * Slow feedback loop
 * Not ready for Continuous Deployment
+
+Note: cats
 
 ---
 ## Solution
@@ -73,8 +84,6 @@ based on
 ## Example of a microservice
 
 ![calculator](calc.png)
-
-Note: question, do you know what ATE for?
 ---
 ## Create a test in 3 steps
 
@@ -147,9 +156,9 @@ class AteOfflineCalculatorComponentTest
 @[18-20] (Create containters)
 @[33,37,42] (Intialise kinisis)
 @[45-47] (Create streams)
-@[49-52] (Update config parameters)
+@[49-51] (Update config parameters)
 ---
-## Step 2 - Stup Segment Definition
+## Step 2 - Stub Downstream services
 ```
 private def setupWireMock(): Unit = {
   wireMockServer = new WireMockServer(WireMockConfiguration.wireMockConfig().dynamicPort())
@@ -226,17 +235,13 @@ Note: Mention:
 ---
 ### Areas of improvement  
   - Dockerised AWS components may not be 100% identical to real ones
+  - Not 100% similarity between environments 
   - Mocked data in services, can be wrong assumptions
-  
-Note: sometime we have to use comfiguraiton trics
 ---
 ### DOs
   * Test all business related features
   * Test multiple interactions
   * Think, can the test be flaky?
-  
-Note: test age, gender, interest
-  if there is a db, check twice
 ---
 ### Don'ts
   * Don't validate intermediate state (DB for example)
@@ -251,4 +256,5 @@ Note: Example is age calculator that says that we should return an empty list if
 
 ---
 # Thank you
+
 
