@@ -8,7 +8,7 @@ My is Vladimir Batygin, I'm techlead in ATE team. Today I want to share with you
 ## Plan
 
 * Component in testing pyramid
-* Evalution of component test in ATE
+* Evolution of component test in ATE
 * How to
 * Dos and Don'ts
 Note: 
@@ -20,24 +20,24 @@ Note:
 #### Component test
 ![test pyramid](p2_2.png)
 
-Note: test naming is difficult: Integration, Component, System, Fuctional, Acceptance
-agree about naminig in your team.
+Note: test naming is difficult: Integration, Component, System, Functional, Acceptance
+agree about naming in your team.
 ---
 * Unit test - test only one class
-* Integration - test integraion with infrastructure (db, queues)
+* Integration - test integration with infrastructure (db, queues)
 * <b>Component - test the whole microservice</b>
 * Smoke - verify end to end
-Note: vs integration: whole component not only one dependency, buisness requirements
-vs smoke: only one component, differents paths, close but not idential to real
+Note: vs integration: whole component not only one dependency, business requirements
+vs smoke: only one component, differents paths, close but not identical to real
 ---
 ### Component vs Integration
 * Whole component, not only one dependency
-* Test blackbox, no mocks
-* Test all buisness features, not edgecases 
+* Test black box, no mocks
+* Test all business features, not edge cases 
 ---
 ## Component vs Smoke
 * Close to real, but may not be real
-* Test all buisness requirements, not only happy path
+* Test all business requirements, not only happy path
 * Running locally
 
 Note: still need postdeployment checks or helthchecks
@@ -52,11 +52,11 @@ Note: still need postdeployment checks or helthchecks
 * Exceptions on startup (not the whole code is tested)
 * Issues with local run and security 
 * Slow feedback loop
-* Not ready for Continious Deployment
+* Not ready for Continuous Deployment
 
 ---
 ## Solution
-* Ligtweigt test that tests the whole application
+* Lightweight test that tests the whole application
 * Use dockerised AWS
 ---
 
@@ -215,7 +215,7 @@ feature("age criterion matching") {
 @[11,13-16]
 Note: Mention:
 1) Not only happy path 
-2) Use buisness use-cases
+2) Use business use-cases
 ---
 ### Benefits of dockerised tests
   - Fast feedback (run any test locally)
@@ -229,7 +229,7 @@ Note: Mention:
 ---
 ### DOs
   * Test all business related features
-  * Test multiple interractions
+  * Test multiple interactions
   * Think, can the test be flaky?
 ---
 ### Don'ts
@@ -238,4 +238,11 @@ Note: Mention:
   
 Note: Example is age calculator that says that we should return an empty list if there are no age segments.
 ---
+## Contacts
+#### @spt-ads-ate
+#### @vladimir.batygin
+#### @xabier.laiseca
+
+---
 # Thank you
+
