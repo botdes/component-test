@@ -33,7 +33,7 @@ advice: agree about naming in your team.
 * Unit test - test only one class
 * Integration - test integration with infrastructure (db, queues)
 * <b>Component - test the whole microservice</b>
-* Smoke - verify end to end 
+* Smoke - verify end to end in runitime environment
 Note: vs integration: whole component not only one dependency, business requirements
 vs smoke: only one component, differents paths, close but not identical to real
 ---
@@ -79,6 +79,8 @@ Note: cats
 based on 
 <br />
 `com.spotify:docker-client`
+
+Note: java library that allows you to run the test from idea without additinal docker magic. Collected different containers for AWS and not only dependencies.
 
 ---
 ## Example of a microservice
