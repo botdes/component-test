@@ -8,7 +8,7 @@ My is Vladimir Batygin, I'm techlead in ATE team. Today I want to share with you
 ## Plan
 
 * Component in testing pyramid
-* Evaluation of component test in ATE
+* Evalution of component test in ATE
 * How to
 * Dos and Don'ts
 Note: 
@@ -20,17 +20,26 @@ Note:
 #### Component test
 ![test pyramid](p2_2.png)
 
+Note: test naming is difficult: Integration, Component, System, Fuctional, Acceptance
+agree about naminig in your team.
 ---
 * Unit test - test only one class
-* Integration - test external dependecies
+* Integration - test integraion with infrastructure (db, queues)
 * <b>Component - test the whole microservice</b>
 * Smoke - verify end to end
-
+Note: vs integration: whole component not only one dependency, buisness requirements
+vs smoke: only one component, differents paths, close but not idential to real
 ---
-## Requirements for component tests
-* Close to production
+### Component vs Integration
+* Whole component, not only one dependency
+* Test builsness requirements
+* Test blackbox, no mock
+* Test all buisness features, not edgecases 
+---
+## Component vs Smoke
+* Close to real, but may not be real
 * Running locally
-* Test all buisness requirements
+* Test all buisness requirements, not only happy path
 
 ---
 # 1.5 years ago
