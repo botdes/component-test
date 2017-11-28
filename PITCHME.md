@@ -18,7 +18,8 @@ My name is Vladimir Batygin, I'm a techlead in ATE team. Today I want to share w
 * How to
 * DOs and DON'Ts
 
-Note: Angenda for next 20 minutes, look at an example of test, some advices
+Note: Angenda for next 20 minutes, 
+we'll see how we endup writeing component tests, go through an example of test, I'll share some advices
 ---
 #### Where will you place component test?
 ![test pyramid](p1_2.png)
