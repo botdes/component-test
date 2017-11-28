@@ -207,9 +207,10 @@ Note: Mention:
 1) Not only happy path 
 2) Use buisness use-cases
 ---
-### Component test using docker
+### Benefits of dockerised tests
   - Fast feedback (run any test locally)
   - Uses clean environment
+  - Can be reproduced on any machine
 ---
 ### Areas of improvement  
   - Dockerised AWS components may not be 100% identical to real ones
@@ -227,8 +228,4 @@ Note: Mention:
   
 Note: Example is age calculator that says that we should return an empty list if there are no age segments.
 ---
-### In this presentation we've seen that component tests are easy and can give a lot of benifits
-?
----
-@vladimir.batygin
-@xabier.laiseca
+# Thank you
