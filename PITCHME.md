@@ -147,7 +147,7 @@ class AteOfflineCalculatorComponentTest
 @[18-20] (Create containters)
 @[33,37,42] (Intialise kinisis)
 @[45-47] (Create streams)
-@[49-51] (Update config parameters)
+@[49-52] (Update config parameters)
 ---
 ## Step 2 - Stup Segment Definition
 ```
@@ -227,13 +227,15 @@ Note: Mention:
 ### Areas of improvement  
   - Dockerised AWS components may not be 100% identical to real ones
   - Mocked data in services, can be wrong assumptions
-  Note: sometime we have to use comfiguraiton trics
+  
+Note: sometime we have to use comfiguraiton trics
 ---
 ### DOs
   * Test all business related features
   * Test multiple interactions
   * Think, can the test be flaky?
-  Note: test age, gender, interest
+  
+Note: test age, gender, interest
   if there is a db, check twice
 ---
 ### Don'ts
