@@ -18,8 +18,8 @@ My name is Vladimir Batygin, I'm a techlead in ATE team. Today I want to share w
 * How to
 * DOs and DON'Ts
 
-Note: Angenda for next 20 minutes, 
-we'll see how we endup writeing component tests, go through an example of test, I'll share some advices
+Note: Angenda for next 20 minutes.
+We'll see how we endup writeing component tests, go through an example of test, I'll share some advices.
 ---
 #### Where will you place component test?
 ![test pyramid](p1_2.png)
@@ -28,15 +28,14 @@ we'll see how we endup writeing component tests, go through an example of test, 
 #### Component test
 ![test pyramid](p2_2.png)
 
-Note: test naming is difficult: Integration, Component, System, Functional, Acceptance
+Note: test naming is difficult: Integration, Component, System, Functional, Acceptance.
 advice: agree about naming in your team.
 ---
 * Unit test - test only one class
 * Integration - test integration with infrastructure (db, queues)
 * <b>Component - test the whole microservice</b>
 * Smoke - verify end to end in runitime environment
-Note: vs integration: whole component not only one dependency, business requirements
-vs smoke: only one component, differents paths, close but not identical to real
+Note: Unit test - small obvious, Integration - like unit but with infra, Component - buisness requirements, Smoke - e2e in real life.
 ---
 ### Component vs Integration
 * Whole component, not only one dependency
@@ -49,7 +48,7 @@ Note: Component test whole component, integration get checks who we integrate wi
 * Test all business requirements, not only happy path
 * Running locally
 
-Note: Some is e2e test. We still need postdeployment checks or helthchecks
+Note: Smoke is e2e test. We still need postdeployment checks or helthchecks
 ---
 # ate 1.5 years ago
 * Integration test using developers account in AWS
