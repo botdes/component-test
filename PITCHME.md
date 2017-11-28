@@ -64,7 +64,10 @@ based on
 
 ![calculator](calc.png)
 ---
-## Setup Kinesis
+## Create a test in 3 steps
+
+---
+## Step 1 - Setup Kinesis
 ```
 class AteOfflineCalculatorComponentTest
   extends FeatureSpec
@@ -134,7 +137,7 @@ class AteOfflineCalculatorComponentTest
 @[45-47] (Create streams)
 @[49-51] (Update config parameters)
 ---
-## Setup segment definition stub
+## Step 2 - Stup Segment Definition
 ```
 private def setupWireMock(): Unit = {
   wireMockServer = new WireMockServer(WireMockConfiguration.wireMockConfig().dynamicPort())
@@ -175,7 +178,7 @@ private val segmentsJson: String =
 @[26-32]
 
 ---
-## Tests 
+## Step 3 - Tests 
 ```
 feature("age criterion matching") {
   scenario("user matches criterion with single age bracket") {
@@ -207,25 +210,20 @@ Note: Mention:
 ### Component test using docker
   - Fast feedback (run any test locally)
   - Uses clean environment
-  - Quick to run 
 ---
-### Issues  
+### Areas of improvement  
   - Dockerised AWS components may not be 100% identical to real ones
+  - Not 100% similarity between environments 
   - Mocked data in services, can be wrong assumptions
-  - Not 100% similarity between environments (if isLocal)
-
 ---
 ### DOs
-  * Test one thing at a time 
-  * Think, can the test be flaky?
   * Test all business related features
-  
+  * Test multiple interractions
+  * Think, can the test be flaky?
 ---
 ### Don'ts
-  * Don't check DB
-  * Don't mock juice modules
-
-  
+  * Don't validate intermediate state (DB for example)
+  * Don't use mocks
   
 Note: Example is age calculator that says that we should return an empty list if there are no age segments.
 ---
