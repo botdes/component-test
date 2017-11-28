@@ -23,7 +23,7 @@ Note:
 ---
 * Unit test - test only one class
 * Integration - test external dependecies
-* <b>Component - test whole microservice</b>
+* <b>Component - test the whole microservice</b>
 * Smoke - verify end to end
 
 ---
