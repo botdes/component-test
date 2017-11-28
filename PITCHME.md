@@ -1,15 +1,17 @@
 @title[Introduction]
 
 # ATE Component Tests
-
+Note:
+My is Vladimir Batygin, I'm techlead in ATE team. Today I want to share with you how we do component test in ATE.
 ---
 @title[Plan]
 ## Plan
 
-* What is ATE
 * Component in testing pyramid
 * Evaluation of component test in ATE
-* Best practices
+* How to
+* Dos and Don'ts
+Note: 
 ---
 #### Where will you place component test?
 ![test pyramid](p1_2.png)
@@ -17,68 +19,38 @@
 ---
 #### Component test
 ![test pyramid](p2_2.png)
+
+---
+#### Unit test - test only one class
+#### Integration - test external dependecies
+## Component - test whole microservice
+#### Smoke - verify end to end
+
 ---
 ## Requirements for component tests
 * Close to production
-* Blackbox 
-* Fast feedback
-* Stable
 * Running locally
-* Easy to read, ideally describes what service is doing
-
-Note: 
-I worked in a project which did computation on hadoop using hive. There project calculated some advertising metrics, so the numbers themselfs didn't mean a lot to programmers. In order to do a simplest change we needed to run a component test. The test on hadoop took ~1h. It was flaky. The output was just a bunch of numbers, so I coulnd say are they correct or not. morrover there was an invisible simbol separator that made the results completly unreadable. It took about two days to submit a change of 10 minutes coding. It was such a waste of time changing something in that project.
-Why am I telling this story - don't do like this.
-Since that time I began particulary sensity
----
-
-@title[What is ATE]
-
-## ATE (Simplified)
-
-![small diagram](s_diagram_2.png)
+* Test all buisness requirements
 
 ---
-
-@title[What is ATE]
-
-## ATE (zoom in)
-
-![diagram](diagram.png)
-Note: diagram here pulse, um, users -> ATE -> users/segments
-to undertand the scope of the problem.
----
-
-@title[What is ATE]
-
-### 15 backend engeneers
-### 63 gihub repos
-### 25 microservices
-#### Scala Ec2 S3 Kineis SQS Postgres Aerospike
-#### Cassandra Spark ElasticSearch 
-
----
-
 # 1.5 years ago
-### UnitTest 
-### IntegrationTest 
-### SmokeTest
-* Integration test using developers account in  AWS
-* Run manually smoke test
-* Look at datadog metrics in dev and pre environments
+## UnitTest 
+## IntegrationTest 
+## SmokeTest
+#### Integration test using developers account in AWS
+#### Run manually smoke test
+#### Look at datadog metrics in dev and pre environments
 
 ---
 ## Issues
-* Exeptions on startup (not the whole code tested)
-* Shared AWS resources between tests
+* Exceptions on startup (not the whole code is tested)
 * Issues with local run and security 
-* Not very stable
 * Slow feedback loop
 * Not ready for Continious Deployment
 
 ---
 ## Solution
-* Ligtweigt test that test the whole application
+* Ligtweigt test that tests the whole application
 * Use dockerised AWS
 ---
 
@@ -87,7 +59,8 @@ to undertand the scope of the problem.
 [shared-docker-test-containers](https://github.schibsted.io/spt-advertising/shared-docker-test-containers)
 <br />
 <br />
-based on `com.spotify:docker-client`
+based on 
+`com.spotify:docker-client`
 
 ---
 ## Example of a microservice
@@ -158,10 +131,11 @@ class AteOfflineCalculatorComponentTest
   }
 
 ```
-@[6](mix in shared test dependencies)
-@[18-20] (create containters)
-@[33,37,42] (intialise kinisis)
-@[43-52] (update config parameters)
+@[6](Mix in shared test dependencies)
+@[18-20] (Create containters)
+@[33,37,42] (Intialise kinisis)
+@[45-47] (Create streams)
+@[49-51] (Update config parameters)
 ---
 ## Setup segment definition stub
 ```
@@ -244,22 +218,21 @@ Note: Mention:
   - Not 100% similarity between environments (if isLocal)
 
 ---
-### Best practices
+### DOs
   * Test one thing at a time 
   * Think, can the test be flaky?
-  * Check not only one happy path, but business related feature
+  * Test all business related features
   
-  
-  <br />
-  <br />
-  
+---
+### Don'ts
   * Don't check DB
   * Don't mock juice modules
 
   
   
-Note: Example is age calculator that says that we should return an empty list if there is no age segments.
+Note: Example is age calculator that says that we should return an empty list if there are no age segments.
 ---
+### In this presentation we've seen that component tests are easy and can give a lot of benifits
 ?
 ---
 @vladimir.batygin
