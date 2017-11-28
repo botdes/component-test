@@ -73,6 +73,7 @@ based on
 ## Example of a microservice
 
 ![calculator](calc.png)
+ Note: question, do you know what ATE for?
 ---
 ## Create a test in 3 steps
 
@@ -224,13 +225,15 @@ Note: Mention:
 ---
 ### Areas of improvement  
   - Dockerised AWS components may not be 100% identical to real ones
-  - Not 100% similarity between environments 
   - Mocked data in services, can be wrong assumptions
+  Note: sometime we have to use comfiguraiton trics
 ---
 ### DOs
   * Test all business related features
   * Test multiple interactions
   * Think, can the test be flaky?
+  Note: test age, gender, interest
+  if there is a db, check twice
 ---
 ### Don'ts
   * Don't validate intermediate state (DB for example)
