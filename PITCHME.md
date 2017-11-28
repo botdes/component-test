@@ -73,7 +73,8 @@ based on
 ## Example of a microservice
 
 ![calculator](calc.png)
- Note: question, do you know what ATE for?
+
+Note: question, do you know what ATE for?
 ---
 ## Create a test in 3 steps
 
