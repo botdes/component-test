@@ -32,17 +32,17 @@ vs smoke: only one component, differents paths, close but not idential to real
 ---
 ### Component vs Integration
 * Whole component, not only one dependency
-* Test builsness requirements
-* Test blackbox, no mock
+* Test blackbox, no mocks
 * Test all buisness features, not edgecases 
 ---
 ## Component vs Smoke
 * Close to real, but may not be real
-* Running locally
 * Test all buisness requirements, not only happy path
+* Running locally
 
+Note: still need postdeployment checks or helthchecks
 ---
-# 1.5 years ago
+# ate 1.5 years ago
 #### Integration test using developers account in AWS
 #### Run manually smoke test
 #### Look at datadog metrics in dev and pre environments
@@ -66,6 +66,7 @@ vs smoke: only one component, differents paths, close but not idential to real
 <br />
 <br />
 based on 
+<br />
 `com.spotify:docker-client`
 
 ---
