@@ -34,7 +34,6 @@ Note:
 
 ---
 # 1.5 years ago
-## UnitTest IntegrationTest SmokeTest
 #### Integration test using developers account in AWS
 #### Run manually smoke test
 #### Look at datadog metrics in dev and pre environments
